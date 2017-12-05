@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Uber Rider Twin</string>
+
+    <!--LOGIN-->
+    <string name="login.register">REGISTER</string>
+    <string name="login.sing_in">SING IN</string>
+    <string name="title_uber">U B E R  T W I N</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="title_register">REGISTER</string>
+    <string name="message_register">Please use email to register</string>
+    <string name="cancel">CANCEL</string>
+    <string name="email_empty">please enter email</string>
+    <string name="email_valid">please enter valid email</string>
+    <string name="pass_empty">please enter password</string>
+    <string name="name_empty">please enter name</string>
+    <string name="phone_empty">please enter phone</string>
+    <string name="title_login">SING IN</string>
+
+    <!--MAPS-->
+    <string name="title_activity_welcome_maps">Map</string>
+    <string name="online">You are online</string>
+    <string name="offline">You are offline</string>
+    <string name="device_not_supported">This device is not supported</string>
+    <string name="find_user">FIND USER</string>
+    <string name="login_error">Login failure</string>
+    <string name="succes_register">Succes register</string>
+    <string name="database_error">Database error</string>
+    <string name="createuser_error">Error create user</string>
+    <string name="your_location">Your location</string>
+    <string name="title_gps_off">GPS OFF</string>
+    <string name="message_gps_off">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="pickup_location">Pickup Location</string>
+    <string name="status_online">Please turn ONLINE</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_wel">Map</string>
+    <string name="pickup_here_info">Pickup here</string>
+    <string name="pickup_optional_info">Optional</string>
+    <string name="getting_driver">Getting your driver...</string>
+</resources>
