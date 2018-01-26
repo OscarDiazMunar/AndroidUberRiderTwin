@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "771439210091",
-    "firebase_url": "https://androiduberridertwin.firebaseio.com",
-    "project_id": "androiduberridertwin",
-    "storage_bucket": "androiduberridertwin.appspot.com"
+    "project_number": "70073664599",
+    "firebase_url": "https://androidubertwin.firebaseio.com",
+    "project_id": "androidubertwin",
+    "storage_bucket": "androidubertwin.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:771439210091:android:0ea8a7dfdd2eed03",
+        "mobilesdk_app_id": "1:70073664599:android:7e245072315164e0",
         "android_client_info": {
-          "package_name": "com.oscar.androiduberridertwin"
+          "package_name": "com.oscar.androidubertwin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "771439210091-j0dvdns3nvqvjss4t8di09sch9f98nj6.apps.googleusercontent.com",
+          "client_id": "70073664599-992ge4sgf27kvq2gdm714caqadlqtmka.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.oscar.androiduberridertwin",
+            "package_name": "com.oscar.androidubertwin",
             "certificate_hash": "d399daf5a83091f4dd6a5d5ac5e3bb84831d9c4c"
           }
         },
         {
-          "client_id": "771439210091-tf1n0atonehm741h1qpve1spvbv7vq8f.apps.googleusercontent.com",
+          "client_id": "70073664599-bqvb86dnf197al5p0f8l6kd4c748vljr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyApgE-ezdxuKaYq_XGf5TV0h-mc_QgD1ko"
+          "current_key": "AIzaSyBlFV930uzGF_CwA5cWt5kJbb-BuuWKfJs"
         }
       ],
       "services": {
@@ -40,10 +40,41 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "771439210091-tf1n0atonehm741h1qpve1spvbv7vq8f.apps.googleusercontent.com",
+              "client_id": "70073664599-bqvb86dnf197al5p0f8l6kd4c748vljr.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70073664599:android:0ea8a7dfdd2eed03",
+        "android_client_info": {
+          "package_name": "com.oscar.androiduberridertwin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70073664599-bqvb86dnf197al5p0f8l6kd4c748vljr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlFV930uzGF_CwA5cWt5kJbb-BuuWKfJs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

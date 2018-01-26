@@ -23,12 +23,14 @@ import com.oscar.androiduberridertwin.domain.model.Rider;
 import com.oscar.androiduberridertwin.presentation.presenter.Presenter;
 import com.oscar.androiduberridertwin.presentation.ui.MainActivity;
 import com.oscar.androiduberridertwin.presentation.view.IMainActivityView;
+import com.oscar.androiduberridertwin.utils.Constants;
 import com.oscar.androiduberridertwin.utils.Validator;
+
 
 /**
  * Created by oscar on 11/10/2017.
  */
-public class MainActivityPresenter extends Presenter<IMainActivityView> implements IMainActivityPresenter{
+public class MainActivityPresenter extends Presenter<IMainActivityView> implements IMainActivityPresenter {
 
     private static MainActivity mainActivity;
     private static Context context;
@@ -63,7 +65,7 @@ public class MainActivityPresenter extends Presenter<IMainActivityView> implemen
     public void onCreate() {
         auth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseRiders = firebaseDatabase.getReference("Riders");
+        databaseRiders = firebaseDatabase.getReference(Constants.DBTables.user_rider_table);
     }
 
     @Override

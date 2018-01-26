@@ -5,6 +5,11 @@ import com.oscar.androiduberridertwin.presentation.presenter.Presenter;
 /**
  * Created by oscar on 12/5/2017.
  */
-
 public interface IHomeActivityView extends Presenter.PView {
+    /**
+     * Show toast.
+     *
+     * @param message the message
+     */
+    void showToast(String message);
 }

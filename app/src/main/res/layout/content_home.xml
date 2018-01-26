@@ -45,7 +45,7 @@
                     android:id="@+id/btnPickUprequest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PICKUP REQUEST"
+                    android:text="@string/pickup_request"
                     android:layout_below="@+id/imgExpandable"
                     android:layout_margin="10dp"
                     android:textColor="@android:color/white"

@@ -44,4 +44,7 @@
     <string name="pickup_here_info">Pickup here</string>
     <string name="pickup_optional_info">Optional</string>
     <string name="getting_driver">Getting your driver...</string>
+    <string name="pickup_request">PICKUP REQUEST</string>
+    <string name="call_driver_txt">CALL DRIVER</string>
+    <string name="phone_txt">Phone:</string>
 </resources>
