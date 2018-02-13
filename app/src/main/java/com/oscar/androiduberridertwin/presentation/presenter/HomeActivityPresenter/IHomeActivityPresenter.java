@@ -26,4 +26,5 @@ public interface IHomeActivityPresenter {
      * @param senderFCM the sender fcm
      */
     void sendMessageNotification(SenderFCM senderFCM);
+    void systemDriverPresence();
 }

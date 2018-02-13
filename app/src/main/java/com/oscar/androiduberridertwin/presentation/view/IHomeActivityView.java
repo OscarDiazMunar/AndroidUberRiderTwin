@@ -12,4 +12,6 @@ public interface IHomeActivityView extends Presenter.PView {
      * @param message the message
      */
     void showToast(String message);
+
+    void loadAllAvailableDriver();
 }

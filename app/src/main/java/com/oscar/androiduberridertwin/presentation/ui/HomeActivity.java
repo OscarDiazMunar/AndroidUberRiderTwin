@@ -2,6 +2,7 @@ package com.oscar.androiduberridertwin.presentation.ui;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -105,7 +106,7 @@ public class HomeActivity extends AppCompatActivity
 
     private LocationRequest locationRequest;
     private GoogleApiClient googleApiClient;
-    private Location lastLocation;
+    private static Location lastLocation;
 
     private static final int UPDATE_INTERVAL = 5000;
     private static final int FATEST_INTERVAL = 3000;
@@ -122,6 +123,8 @@ public class HomeActivity extends AppCompatActivity
     private int radius = 1; // 1 km
     private int distance = 1; // 3 km
     private final static int LIMIT_DISTANCE = 3;
+
+    private static Resources resources;
 
     /**
      * The Presenter.
@@ -140,6 +143,7 @@ public class HomeActivity extends AppCompatActivity
         initializeDagger();
 
         presenter.setView(this);
+        resources = getResources();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -152,6 +156,7 @@ public class HomeActivity extends AppCompatActivity
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
 
         reference = FirebaseDatabase.getInstance().getReference(Constants.DBTables.driver_table);
         geoFire = new GeoFire(reference);
@@ -234,7 +239,7 @@ public class HomeActivity extends AppCompatActivity
 
         lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
         if (lastLocation != null) {
-//            if (locationSwitch.isChecked()) {
+            presenter.systemDriverPresence();
             final double latitude = lastLocation.getLatitude();
             final double longitude = lastLocation.getLongitude();
             LatLng latLng = new LatLng(latitude, longitude);
@@ -254,7 +259,14 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-    private void loadAllAvailableDriver() {
+    @Override
+    public void loadAllAvailableDriver() {
+
+        mMap.clear();
+        mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude()))
+                        .title("You"));
+
         DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference(Constants.DBTables.driver_table);
         GeoFire geoFire = new GeoFire(driverLocation);
         GeoQuery geoQuery = geoFire.queryAtLocation(
@@ -277,8 +289,9 @@ public class HomeActivity extends AppCompatActivity
                                             .flat(true)
                                             //.title(getString(R.string.phone_txt) + rider.getPhone())
                                             .title(rider.getName())
-                                            .snippet(getString(R.string.phone_txt) + rider.getPhone())
+                                            .snippet(resources.getString(R.string.phone_txt) + rider.getPhone())
                                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.car)));
+                                    //getApplicationContext().getString(R.string.phone_txt)
                                 }
                             }
 
@@ -467,7 +480,8 @@ public class HomeActivity extends AppCompatActivity
                             Token token = postSnapshot.getValue(Token.class);
 
                             String jsonLatLng = new Gson().toJson(new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude()));
-                            Notification dataFCM = new Notification("UberTwin", jsonLatLng);
+                            String riderToken = FirebaseInstanceId.getInstance().getToken();
+                            Notification dataFCM = new Notification(riderToken, jsonLatLng);
                             SenderFCM content = new SenderFCM(dataFCM, token.getToken());
                             Log.e("sender", content.toString());
                             presenter.sendMessageNotification(content);
