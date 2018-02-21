@@ -1,5 +1,6 @@
 package com.oscar.androiduberridertwin.presentation.view;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.oscar.androiduberridertwin.presentation.presenter.Presenter;
 
 /**
@@ -13,5 +14,11 @@ public interface IHomeActivityView extends Presenter.PView {
      */
     void showToast(String message);
 
-    void loadAllAvailableDriver();
+    /**
+     * Load all available driver.
+     *
+     * @param location the location
+     */
+    void loadAllAvailableDriver(LatLng location);
+
 }

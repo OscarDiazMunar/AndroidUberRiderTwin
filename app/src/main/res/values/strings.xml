@@ -47,4 +47,5 @@
     <string name="pickup_request">PICKUP REQUEST</string>
     <string name="call_driver_txt">CALL DRIVER</string>
     <string name="phone_txt">Phone:</string>
+    <string name="driver_no_available">No available any driver near you</string>
 </resources>

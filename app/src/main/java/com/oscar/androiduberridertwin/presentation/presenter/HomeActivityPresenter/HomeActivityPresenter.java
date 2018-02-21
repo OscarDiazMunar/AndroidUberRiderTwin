@@ -3,7 +3,6 @@ package com.oscar.androiduberridertwin.presentation.presenter.HomeActivityPresen
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,12 +43,12 @@ public class HomeActivityPresenter extends Presenter<IHomeActivityView> implemen
 
     }
 
-    public void systemDriverPresence() {
+    public void systemDriverPresence(final LatLng latLng) {
         driversAvailable = FirebaseDatabase.getInstance().getReference(Constants.DBTables.driver_table);
         driversAvailable.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                homeActivity.loadAllAvailableDriver();
+                homeActivity.loadAllAvailableDriver(latLng);
             }
 
             @Override
