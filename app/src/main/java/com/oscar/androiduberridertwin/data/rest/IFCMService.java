@@ -20,7 +20,7 @@ public interface IFCMService {
      * @return the observable
      */
     @Headers({"Content-Type:application/json",
-            "Authorization:key=AAAAEFC3RFc:APA91bE-8RnbJydHymhNX8O2WK3T_6QUxVAivZAtPTtRj7-ucdUqeQ504Gm7g5kAtWZerESqvQXtnIr28ovU9GtwWZeYQpMAGkqE4D1gPMrLUa0o543x_nCJTx2ovNJHbrac0SIlt2b2"})
+            "Authorization:key="})
     @POST("fcm/send")
     Observable<ResponseFCM> sendMessage(@Body SenderFCM body);
 }

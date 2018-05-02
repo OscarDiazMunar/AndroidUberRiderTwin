@@ -12,8 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +46,8 @@ public class MainActivityPresenter extends Presenter<IMainActivityView> implemen
     private EditText txtEmailLogin;
     private EditText txtPasswordLogin;
     private TextInputLayout txtInputPasswordLogin;
+
+    private EditText txtEmailForgot;
 
     private FirebaseAuth auth;
     private FirebaseDatabase firebaseDatabase;
@@ -153,6 +157,98 @@ public class MainActivityPresenter extends Presenter<IMainActivityView> implemen
         buttonPositive.setEnabled(false);
 
         checkValidationFieldsLogin(buttonPositive);
+    }
+
+    @Override
+    public void showForgotDialog() {
+        Button buttonPositive;
+        AlertDialog.Builder dialogForgot = new AlertDialog.Builder(this.context);
+        dialogForgot.setTitle(R.string.title_forgot_pass);
+        dialogForgot.setMessage(R.string.message_register);
+
+        LayoutInflater inflater = LayoutInflater.from(this.context);
+        View forgotLayout = inflater.inflate(R.layout.layout_forgot_pass, null);
+
+        txtEmailForgot = (EditText)forgotLayout.findViewById(R.id.txtEmail_forgot);
+        dialogForgot.setView(forgotLayout);
+
+        dialogForgot.setPositiveButton(R.string.forgot_reset, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                getView().showProgress();
+                getView().enableButtons(false);
+                forgotUser();
+            }
+        });
+
+        dialogForgot.setNegativeButton(context.getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog dialog = dialogForgot.create();
+        dialog.show();
+        buttonPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        buttonPositive.setEnabled(false);
+
+        checkValidationFieldsForgot(buttonPositive);
+    }
+
+    private void checkValidationFieldsForgot(final Button buttonPositive) {
+        txtEmailForgot.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (txtEmailForgot.getText().toString().isEmpty()){
+                    txtEmailForgot.setError(context.getString(R.string.email_empty));
+                }
+            }
+        });
+
+        txtEmailForgot.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (txtEmailForgot.getText().toString().isEmpty()){
+                    txtEmailForgot.setError(context.getString(R.string.email_empty));
+                    buttonPositive.setEnabled(false);
+                }else if (Validator.isValidEmail(txtEmailForgot.getText().toString())){
+                    txtEmailForgot.setError(context.getString(R.string.email_valid));
+                    buttonPositive.setEnabled(false);
+                }else {
+                    buttonPositive.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    private void forgotUser() {
+        auth.sendPasswordResetEmail(txtEmailForgot.getText().toString().trim())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        getView().enableButtons(true);
+                        getView().dismissProgress();
+                        getView().setMessageSnackBar(context.getString(R.string.emailreset_sent));
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                getView().enableButtons(true);
+                getView().dismissProgress();
+                getView().setMessageSnackBar(""+e.getMessage());
+            }
+        });
     }
 
     private void loginUser() {

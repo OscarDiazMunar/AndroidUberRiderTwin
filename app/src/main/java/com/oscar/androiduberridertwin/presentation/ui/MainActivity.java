@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.oscar.androiduberridertwin.R;
 import com.oscar.androiduberridertwin.di.MainActivity.DaggerMainComponent;
@@ -47,12 +48,18 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
      */
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    /**
+     * The Txt forgot pass.
+     */
+    @BindView(R.id.txtForgotPass)
+    TextView txtForgotPass;
 
     /**
      * The Presenter.
      */
     @Inject
     MainActivityPresenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     private void initializeDagger() {
         MainComponent mainComponent = DaggerMainComponent.builder()
-                                        .mainModule(new MainModule(this)).build();
+                .mainModule(new MainModule(this)).build();
         mainComponent.inject(this);
     }
 
@@ -77,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
      *
      * @param view the view
      */
-    @OnClick({R.id.btnSing, R.id.btnRegister})
+    @OnClick({R.id.btnSing, R.id.btnRegister, R.id.txtForgotPass})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnSing:
@@ -85,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
                 break;
             case R.id.btnRegister:
                 presenter.showRegisterDialog();
+                break;
+            case R.id.txtForgotPass:
+                presenter.showForgotDialog();
                 break;
         }
     }
@@ -113,5 +123,12 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     public void enableButtons(boolean enable) {
         btnRegister.setEnabled(enable);
         btnSing.setEnabled(enable);
+    }
+
+    /**
+     * On view clicked.
+     */
+    @OnClick(R.id.txtForgotPass)
+    public void onViewClicked() {
     }
 }

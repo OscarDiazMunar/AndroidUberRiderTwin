@@ -48,4 +48,10 @@
     <string name="call_driver_txt">CALL DRIVER</string>
     <string name="phone_txt">Phone:</string>
     <string name="driver_no_available">No available any driver near you</string>
+    <string name="marker_tapdestination">Destination</string>
+
+    <string name="txt_forgot_password">Forgot password? Just tap here!</string>
+    <string name="title_forgot_pass">Reset password</string>
+    <string name="forgot_reset">RESET</string>
+    <string name="emailreset_sent">Reset password has been sent</string>
 </resources>

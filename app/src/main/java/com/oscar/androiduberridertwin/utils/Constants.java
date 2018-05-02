@@ -43,4 +43,22 @@ public class Constants {
          */
         String tokens_table = "Tokens";
     }
+
+    /**
+     * The interface Fares.
+     */
+    public interface Fares{
+        /**
+         * The constant base_fare.
+         */
+        double base_fare = 2.55;
+        /**
+         * The constant time_rate.
+         */
+        double time_rate = 0.35;
+        /**
+         * The constant distance_rate.
+         */
+        double distance_rate = 1.75;
+    }
 }

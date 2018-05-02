@@ -64,11 +64,11 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_attach_money_black_24dp"/>
             <TextView
-                android:id="@+id/txtTaxes"
+                android:id="@+id/txtRates"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="9"
-                android:text="10Km + 10min = $10" />
+                android:text="-" />
         </LinearLayout>
 
 

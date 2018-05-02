@@ -19,4 +19,9 @@ public interface IMainActivityPresenter {
      * Show login dialog.
      */
     void showLoginDialog();
+
+    /**
+     * Show forgot dialog.
+     */
+    void showForgotDialog();
 }
